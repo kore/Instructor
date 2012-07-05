@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
-public class MyFirstActivity extends Activity
+public class Main extends Activity
 {
     /** Called when the activity is first created. */
     @Override
