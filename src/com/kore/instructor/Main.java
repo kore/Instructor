@@ -8,12 +8,15 @@ import android.os.CountDownTimer;
 
 public class Main extends Activity
 {
-    /** Called when the activity is first created. */
+    protected Processor processor;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        processor = new Processor();
     }
 
     public void startCountdown(View view)

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Instructor</string>
-    <string name="button_send">Send</string>
+
+    <!-- Buttons -->
+    <string name="steps">Stufenintervall</string>
+    <string name="interval">Intervallsatz</string>
+    <string name="superset">Supersatz</string>
+    <string name="circuit">Zirkelintervall</string>
+    <string name="intense">Hochintensitätssatz</string>
+
+    <!-- Status -->
+    <string name="stopped">Gestoppt</string>
 </resources>
