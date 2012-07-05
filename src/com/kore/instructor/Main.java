@@ -6,41 +6,109 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import com.kore.instructor.Visitor.*;
+
 public class Main extends Activity
 {
-    protected Processor processor;
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        processor = new Processor();
     }
 
-    public void startCountdown(View view)
+    protected void run(Training training)
     {
-       final TextView countdown = (TextView) findViewById(R.id.countdown);
+        VisitorI visitor = new TTS(
+            (TextView) findViewById(R.id.countdown),
+            (TextView) findViewById(R.id.status)
+        );
 
-       new CountDownTimer(5000, 100) {
-            public void onTick(long remaining)
-            {
-                countdown.setText(
-                    String.format(
-                        "%02d:%02d:%02d.%02d",
-                        remaining / 1000 / 60 / 60 % 24,
-                        remaining / 1000 / 60 % 60,
-                        remaining / 1000 % 60,
-                        remaining / 10 % 100
-                    )
-                );
-            }
+        training.accept(visitor);
+    }
 
-            public void onFinish()
-            {
-                countdown.setText("00:00:00.00");
-            }
-       }.start();
+    public void startSteps(View view)
+    {
+        run(
+            new Training(
+                new PracticeIteration(
+                    new Practice(
+                        new UnitIteration(
+                            new Unit( 7.5 * 60 ),
+                            1
+                        )
+                    ),
+                    4
+                )
+            )
+        );
+    }
+
+    public void startInterval(View view)
+    {
+        run(
+            new Training(
+                new PracticeIteration(
+                    new Practice(
+                        new UnitIteration(
+                            new Unit( 3 * 60 ),
+                            3
+                        )
+                    ),
+                    4
+                )
+            )
+        );
+    }
+
+    public void startSuperset(View view)
+    {
+        run(
+            new Training(
+                new PracticeIteration(
+                    new Practice(
+                        new UnitIteration(
+                            new Unit( 4 * 60 ),
+                            1
+                        )
+                    ),
+                    6
+                )
+            )
+        );
+    }
+
+    public void startCircuit(View view)
+    {
+        run(
+            new Training(
+                new PracticeIteration(
+                    new Practice(
+                        new UnitIteration(
+                            new Unit( 20 * 60 ),
+                            1
+                        )
+                    ),
+                    1
+                )
+            )
+        );
+    }
+
+    public void startIntense(View view)
+    {
+        run(
+            new Training(
+                new PracticeIteration(
+                    new Practice(
+                        new UnitIteration(
+                            new Unit( 20, 10 ),
+                            8
+                        )
+                    ),
+                    3
+                )
+            )
+        );
     }
 }
