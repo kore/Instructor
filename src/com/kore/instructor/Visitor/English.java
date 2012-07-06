@@ -56,7 +56,7 @@ public class English implements VisitorI
     public void startUnit(Unit unit, int number)
     {
         this.instructions.add(new Instruction("Unit " + number, "Start unit " + number, unit.time));
-        this.instructions.add(new Instruction("Pause", "Pause for " + unit.pause + " seconds", unit.pause));
+        this.instructions.add(new Instruction("Pause", "Pause for " + (int) unit.pause + " seconds", unit.pause));
     }
 
     public void endUnit(Unit unit, int number)
