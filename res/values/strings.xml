@@ -9,6 +9,8 @@
     <string name="circuit">Zirkelintervall</string>
     <string name="intense">Hochintensitätssatz</string>
 
+    <string name="cancel">Abbrechen</string>
+
     <!-- Status -->
     <string name="stopped">Gestoppt</string>
 </resources>

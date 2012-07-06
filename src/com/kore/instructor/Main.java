@@ -14,6 +14,8 @@ public class Main extends Activity implements OnInitListener
 {
     protected TextToSpeech talker;
 
+    protected Countdown countdown;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -23,13 +25,21 @@ public class Main extends Activity implements OnInitListener
 
     protected void run(Training training)
     {
-        this.talker         = new TextToSpeech(this, this);
-        VisitorI visitor    = new English();
-        Countdown countdown = new Countdown(
+        this.talker      = new TextToSpeech(this, this);
+        VisitorI visitor = new English();
+        this.countdown   = new Countdown(
             (TextView) findViewById(R.id.countdown),
             (TextView) findViewById(R.id.status),
             this.talker
         );
+
+        findViewById(R.id.button_steps).setVisibility(View.GONE);
+        findViewById(R.id.button_interval).setVisibility(View.GONE);
+        findViewById(R.id.button_superset).setVisibility(View.GONE);
+        findViewById(R.id.button_circuit).setVisibility(View.GONE);
+        findViewById(R.id.button_intense).setVisibility(View.GONE);
+
+        findViewById(R.id.button_cancel).setVisibility(View.VISIBLE);
 
         training.accept(visitor);
         countdown.start(visitor.getInstructions());
@@ -40,15 +50,37 @@ public class Main extends Activity implements OnInitListener
         // Do nothing
     }
 
+
     public void onDestroy()
     {
-        if (talker != null)
+        if (this.talker != null)
         {
-            talker.stop();
-            talker.shutdown();
+            this.talker.stop();
+            this.talker.shutdown();
         }
 
         super.onDestroy();
+    }
+
+    public void cancelTraining(View view)
+    {
+        if (this.talker != null)
+        {
+            this.talker.stop();
+        }
+
+        if (this.countdown != null)
+        {
+            this.countdown.stop();
+        }
+
+        findViewById(R.id.button_steps).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_interval).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_superset).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_circuit).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_intense).setVisibility(View.VISIBLE);
+
+        findViewById(R.id.button_cancel).setVisibility(View.GONE);
     }
 
     public void startSteps(View view)

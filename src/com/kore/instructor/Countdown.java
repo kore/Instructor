@@ -21,6 +21,8 @@ public class Countdown
 
     protected ArrayList<Instruction> instructions;
 
+    protected Handler handler;
+
     protected static final int MSG = 1;
 
     public Countdown(TextView countdown, TextView status, TextToSpeech talker)
@@ -49,6 +51,15 @@ public class Countdown
         this.nextInstruction();
     }
 
+    public void stop()
+    {
+        if (this.handler != null)
+        {
+            this.handler.removeMessages(MSG);
+            this.instructions = null;
+        }
+    }
+
     protected void nextInstruction()
     {
         if (this.instructions.size() <= 0)
@@ -73,7 +84,7 @@ public class Countdown
         }
 
         final long stopTime = SystemClock.elapsedRealtime() + this.runTime;
-        Handler handler = new Handler()
+        this.handler = new Handler()
         {
             @Override
             public void handleMessage(Message msg)

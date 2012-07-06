@@ -36,12 +36,28 @@
         android:layout_height="wrap_content"
         android:padding="2dip">
         <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_span="2"
+            android:visibility="gone"
+            android:text="@string/cancel"
+            android:onClick="cancelTraining" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:padding="2dip">
+        <Button
+            android:id="@+id/button_steps"
             android:layout_width="0dip" 
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/steps"
             android:onClick="startSteps" />
         <Button
+            android:id="@+id/button_interval"
             android:layout_width="0dip" 
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -53,12 +69,14 @@
         android:layout_height="wrap_content"
         android:padding="2dip">
         <Button
+            android:id="@+id/button_superset"
             android:layout_width="0dip" 
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/superset"
             android:onClick="startSuperset" />
         <Button
+            android:id="@+id/button_circuit"
             android:layout_width="0dip" 
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -70,6 +88,7 @@
         android:layout_height="wrap_content"
         android:padding="2dip">
         <Button
+            android:id="@+id/button_intense"
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
