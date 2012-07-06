@@ -11,6 +11,7 @@
         android:padding="2dip">
         <TextView
             style="@style/Alert"
+            android:textSize="42sp"
             android:id="@+id/countdown"
             android:layout_span="2"
             android:layout_width="fill_parent" 
