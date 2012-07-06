@@ -35,8 +35,7 @@ public class Countdown
     {
         countdown.setText(
             String.format(
-                "%02d:%02d:%02d.%02d",
-                remaining / 1000 / 60 / 60 % 24,
+                "%02d:%02d.%02d",
                 remaining / 1000 / 60 % 60,
                 remaining / 1000 % 60,
                 remaining / 10 % 100
