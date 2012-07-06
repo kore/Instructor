@@ -5,11 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 
 import com.kore.instructor.Visitor.*;
 
-public class Main extends Activity
+public class Main extends Activity implements OnInitListener
 {
+    protected TextToSpeech talker;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -19,14 +23,32 @@ public class Main extends Activity
 
     protected void run(Training training)
     {
-        VisitorI visitor = new English();
+        this.talker         = new TextToSpeech(this, this);
+        VisitorI visitor    = new English();
         Countdown countdown = new Countdown(
             (TextView) findViewById(R.id.countdown),
-            (TextView) findViewById(R.id.status)
+            (TextView) findViewById(R.id.status),
+            this.talker
         );
 
         training.accept(visitor);
         countdown.start(visitor.getInstructions());
+    }
+
+    public void onInit(int status)
+    {
+        // Do nothing
+    }
+
+    public void onDestroy()
+    {
+        if (talker != null)
+        {
+            talker.stop();
+            talker.shutdown();
+        }
+
+        super.onDestroy();
     }
 
     public void startSteps(View view)

@@ -5,12 +5,15 @@ import android.widget.TextView;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.speech.tts.TextToSpeech;
 
 public class Countdown
 {
     protected TextView countdown;
 
     protected TextView status;
+
+    protected TextToSpeech talker;
 
     protected long runTime;
 
@@ -20,10 +23,11 @@ public class Countdown
 
     protected static final int MSG = 1;
 
-    public Countdown(TextView countdown, TextView status)
+    public Countdown(TextView countdown, TextView status, TextToSpeech talker)
     {
         this.countdown = countdown;
         this.status    = status;
+        this.talker    = talker;
         this.interval  = 100;
     }
 
@@ -61,6 +65,7 @@ public class Countdown
     {
         this.runTime = (long) instruction.seconds * 1000;
         this.status.setText(instruction.hint);
+        this.talker.speak(instruction.message, TextToSpeech.QUEUE_FLUSH, null);
 
         if (this.runTime <= 0)
         {
@@ -84,7 +89,6 @@ public class Countdown
                     }
                     else if (timeLeft < interval)
                     {
-                        // no tick, just delay until done
                         sendMessageDelayed(obtainMessage(MSG), timeLeft);
                     }
                     else
@@ -92,7 +96,6 @@ public class Countdown
                         long lastTickStart = SystemClock.elapsedRealtime();
                         onTick(timeLeft);
 
-                        // take into account user's onTick taking time to execute
                         long delay = lastTickStart + interval - SystemClock.elapsedRealtime();
 
                         // special case: user's onTick took more than interval to
