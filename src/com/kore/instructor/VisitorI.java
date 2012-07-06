@@ -1,7 +1,11 @@
 package com.kore.instructor;
 
+import java.util.ArrayList;
+
 public interface VisitorI
 {
+    public ArrayList<Instruction> getInstructions();
+
     public void startTraing(Training training);
 
     public void endTraing(Training training);

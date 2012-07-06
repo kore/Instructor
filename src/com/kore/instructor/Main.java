@@ -19,12 +19,14 @@ public class Main extends Activity
 
     protected void run(Training training)
     {
-        VisitorI visitor = new TTS(
+        VisitorI visitor = new TTS();
+        Countdown countdown = new Countdown(
             (TextView) findViewById(R.id.countdown),
             (TextView) findViewById(R.id.status)
         );
 
         training.accept(visitor);
+        countdown.start(visitor.getInstructions());
     }
 
     public void startSteps(View view)
