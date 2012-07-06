@@ -25,7 +25,7 @@ public class Countdown
 
     protected static final int MSG = 1;
 
-    public Countdown(TextView countdown, TextView status, TextToSpeech talker)
+    public void setAll(TextView countdown, TextView status, TextToSpeech talker)
     {
         this.countdown = countdown;
         this.status    = status;
