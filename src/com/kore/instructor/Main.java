@@ -19,7 +19,7 @@ public class Main extends Activity
 
     protected void run(Training training)
     {
-        VisitorI visitor = new TTS();
+        VisitorI visitor = new English();
         Countdown countdown = new Countdown(
             (TextView) findViewById(R.id.countdown),
             (TextView) findViewById(R.id.status)

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import com.kore.instructor.*;
 
-public class TTS implements VisitorI
+public class English implements VisitorI
 {
     protected ArrayList<Instruction> instructions;
 
-    public TTS()
+    public English()
     {
         this.instructions = new ArrayList<Instruction>();
     }
@@ -56,7 +56,7 @@ public class TTS implements VisitorI
     public void startUnit(Unit unit, int number)
     {
         this.instructions.add(new Instruction("Training", "Start unit " + number, unit.time));
-        this.instructions.add(new Instruction("Pause", "Pause for " + number + " seconds", unit.pause));
+        this.instructions.add(new Instruction("Pause", "Pause for " + unit.pause + " seconds", unit.pause));
     }
 
     public void endUnit(Unit unit, int number)
