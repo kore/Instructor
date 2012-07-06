@@ -14,6 +14,11 @@ See debug output::
 
     adb logcat
 
+Release::
+
+    ant release
+    jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore ~/documents/privat/android/apk.keystore bin/Instructor-release-unsigned.apk kore
+
 
 ..
    Local Variables:
