@@ -28,7 +28,7 @@ public class Countdown
         this.countdown = countdown;
         this.status    = status;
         this.talker    = talker;
-        this.interval  = 100;
+        this.interval  = 10;
     }
 
     public void onTick(long remaining)
