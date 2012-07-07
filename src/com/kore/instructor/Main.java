@@ -1,5 +1,6 @@
 package com.kore.instructor;
 
+import java.util.ArrayList;
 import android.app.Activity;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,7 +48,7 @@ public class Main extends Activity implements OnInitListener
     protected void run(Training training)
     {
         VisitorI visitor = new Basic(getResources());
-        this.countdown = new Countdown();
+        this.countdown = new Countdown(this.getAnnouncements());
 
         this.countdown.setAll(
             (TextView) findViewById(R.id.countdown),
@@ -59,6 +60,34 @@ public class Main extends Activity implements OnInitListener
         training.accept(visitor);
         countdown.start(visitor.getInstructions());
         this.updateViewState(true);
+    }
+
+    protected ArrayList<Announcement> getAnnouncements()
+    {
+        ArrayList<Announcement> announcements = new ArrayList<Announcement>();
+
+        announcements.add(new Announcement(
+            getResources().getQuantityString(R.plurals.minutes, 5, 5),
+            5 * 60 * 1000
+        ));
+        announcements.add(new Announcement(
+            getResources().getQuantityString(R.plurals.minutes, 2, 2),
+            2 * 60 * 1000
+        ));
+        announcements.add(new Announcement(
+            getResources().getQuantityString(R.plurals.minutes, 1, 1),
+            1 * 60 * 1000
+        ));
+        announcements.add(new Announcement(
+            getResources().getQuantityString(R.plurals.seconds, 30, 30),
+            30 * 1000
+        ));
+        announcements.add(new Announcement(
+            getResources().getQuantityString(R.plurals.seconds, 10, 10),
+            10 * 1000
+        ));
+
+        return announcements;
     }
 
     protected void updateViewState(boolean running)

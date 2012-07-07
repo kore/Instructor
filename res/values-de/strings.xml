@@ -14,6 +14,16 @@
     <!-- Status -->
     <string name="stopped">Gestoppt</string>
 
+    <!-- Announcements -->
+    <plurals name="minutes">
+        <item quantity="one">Eine Minute verbleibend</item>
+        <item quantity="other">%d Minuten verbleibend</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">Eine Sekunde verbleibend</item>
+        <item quantity="other">%d Sekunden verbleibend</item>
+    </plurals>
+
     <!-- Training instructions -->
     <string name="prepare">Bereit machen</string>
     <string name="finished">Beendet</string>

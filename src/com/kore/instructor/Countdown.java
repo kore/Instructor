@@ -25,6 +25,15 @@ public class Countdown
 
     protected static final int MSG = 1;
 
+    protected ArrayList<Announcement> announcements;
+
+    protected ArrayList<Announcement> currentAnnouncements;
+
+    public Countdown(ArrayList<Announcement> announcements)
+    {
+        this.announcements = announcements;
+    }
+
     public void setAll(TextView countdown, TextView status, TextToSpeech talker)
     {
         this.countdown = countdown;
@@ -37,12 +46,19 @@ public class Countdown
     {
         countdown.setText(
             String.format(
-                "%02d:%02d.%02d",
+                "% 2d:%02d.%02d",
                 remaining / 1000 / 60 % 60,
                 remaining / 1000 % 60,
                 remaining / 10 % 100
             )
         );
+
+        if ((!this.currentAnnouncements.isEmpty()) &&
+            (this.currentAnnouncements.get(0).time > remaining))
+        {
+            Announcement announcement = this.currentAnnouncements.remove(0);
+            this.talker.speak(announcement.announcement, TextToSpeech.QUEUE_ADD, null);
+        }
     }
 
     public void start(ArrayList<Instruction> instructions)
@@ -76,6 +92,13 @@ public class Countdown
         this.runTime = (long) instruction.seconds * 1000;
         this.status.setText(instruction.hint);
         this.talker.speak(instruction.message, TextToSpeech.QUEUE_ADD, null);
+
+        this.currentAnnouncements = (ArrayList<Announcement>) this.announcements.clone();
+        while ((!this.currentAnnouncements.isEmpty()) &&
+               (this.currentAnnouncements.get(0).time >= runTime))
+        {
+            this.currentAnnouncements.remove(0);
+        }
 
         if (this.runTime <= 0)
         {
