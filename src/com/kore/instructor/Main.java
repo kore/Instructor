@@ -42,7 +42,7 @@ public class Main extends Activity implements OnInitListener
             );
         }
 
-        this.updateViewState(countdown != null);
+        this.updateViewState(this.countdown != null);
     }
 
     protected void run(Training training)
