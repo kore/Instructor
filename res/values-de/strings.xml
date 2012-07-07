@@ -13,4 +13,29 @@
 
     <!-- Status -->
     <string name="stopped">Gestoppt</string>
+
+    <!-- Training instructions -->
+    <string name="prepare">Bereit machen</string>
+    <string name="finished">Beendet</string>
+    <string name="practice">Übung</string>
+    <plurals name="unit">
+        <item quantity="other">Einheit %d</item>
+    </plurals>
+    <string name="pause">Pause</string>
+
+    <plurals name="prepare_long">
+        <item quantity="one">Training startet in einer Sekunde, bereit machen!</item>
+        <item quantity="other">Training startet in %d Sekunden, bereit machen!</item>
+    </plurals>
+    <string name="finished_long">Training beendet</string>
+    <plurals name="practice_long">
+        <item quantity="other">Starte Übung %d</item>
+    </plurals>
+    <plurals name="unit_long">
+        <item quantity="other">Starte Einheit %d</item>
+    </plurals>
+    <plurals name="pause_long">
+        <item quantity="one">Eine Sekunde Pause</item>
+        <item quantity="other">%d Sekunden Pause</item>
+    </plurals>
 </resources>

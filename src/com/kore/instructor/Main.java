@@ -41,7 +41,7 @@ public class Main extends Activity implements OnInitListener
 
     protected void run(Training training)
     {
-        VisitorI visitor = new English();
+        VisitorI visitor = new Basic(getResources());
         this.countdown = new Countdown();
 
         this.countdown.setAll(
