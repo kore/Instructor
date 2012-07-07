@@ -75,7 +75,7 @@ public class Countdown
     {
         this.runTime = (long) instruction.seconds * 1000;
         this.status.setText(instruction.hint);
-        this.talker.speak(instruction.message, TextToSpeech.QUEUE_FLUSH, null);
+        this.talker.speak(instruction.message, TextToSpeech.QUEUE_ADD, null);
 
         if (this.runTime <= 0)
         {
