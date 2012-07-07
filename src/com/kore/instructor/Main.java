@@ -2,6 +2,7 @@ package com.kore.instructor;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -35,7 +36,7 @@ public class Main extends Activity implements OnInitListener
             );
         }
 
-        this.updateButtonVisibility(countdown != null);
+        this.updateViewState(countdown != null);
     }
 
     protected void run(Training training)
@@ -52,11 +53,20 @@ public class Main extends Activity implements OnInitListener
 
         training.accept(visitor);
         countdown.start(visitor.getInstructions());
-        this.updateButtonVisibility(true);
+        this.updateViewState(true);
     }
 
-    protected void updateButtonVisibility(boolean running)
+    protected void updateViewState(boolean running)
     {
+        if (running)
+        {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+        else
+        {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+
         findViewById(R.id.button_steps).setVisibility(running ? View.GONE : View.VISIBLE);
         findViewById(R.id.button_interval).setVisibility(running ? View.GONE : View.VISIBLE);
         findViewById(R.id.button_superset).setVisibility(running ? View.GONE : View.VISIBLE);
@@ -102,7 +112,7 @@ public class Main extends Activity implements OnInitListener
             this.countdown = null;
         }
 
-        this.updateButtonVisibility(false);
+        this.updateViewState(false);
     }
 
     public void startSteps(View view)
