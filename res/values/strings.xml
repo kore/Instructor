@@ -3,14 +3,14 @@
     <string name="app_name">Instructor</string>
 
     <!-- Buttons -->
-    <string name="steps">Stufenintervall</string>
-    <string name="interval">Intervallsatz</string>
-    <string name="superset">Supersatz</string>
-    <string name="circuit">Zirkelintervall</string>
-    <string name="intense">Hochintensitätssatz</string>
+    <string name="steps">Ladders</string>
+    <string name="interval">Interval Sets</string>
+    <string name="superset">Super Sets</string>
+    <string name="circuit">Stappers</string>
+    <string name="intense">Tabatas</string>
 
-    <string name="cancel">Abbrechen</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Status -->
-    <string name="stopped">Gestoppt</string>
+    <string name="stopped">Stopped</string>
 </resources>
