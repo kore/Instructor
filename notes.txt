@@ -18,6 +18,9 @@ Release::
 
     ant release
     jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore ~/documents/privat/android/apk.keystore bin/Instructor-release-unsigned.apk kore
+    cp bin/Instructor-release-unsigned.apk bin/Instructor-unaligned.apk
+    jarsigner -verify -verbose bin/Instructor-unaligned.apk
+    zipalign -v 4 bin/Instructor-unaligned.apk Instructor.apk
 
 
 ..
