@@ -122,7 +122,7 @@ public class Main extends Activity implements OnInitListener
                 new PracticeIteration(
                     new Practice(
                         new UnitIteration(
-                            new Unit( 7.5 * 60 ),
+                            new Unit( 7.5 * 60, 30 ),
                             1
                         )
                     ),
