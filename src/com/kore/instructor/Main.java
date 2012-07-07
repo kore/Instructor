@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
@@ -27,10 +28,14 @@ public class Main extends Activity implements OnInitListener
 
         this.talker = new TextToSpeech(this, this);
 
+        TextView countdown = (TextView) findViewById(R.id.countdown);
+        Typeface font = Typeface.createFromAsset(getAssets(), "lcdmn.ttf");
+        countdown.setTypeface(font);
+
         if (this.countdown != null)
         {
             this.countdown.setAll(
-                (TextView) findViewById(R.id.countdown),
+                countdown,
                 (TextView) findViewById(R.id.status),
                 this.talker
             );
